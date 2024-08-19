@@ -1,0 +1,105 @@
+# Build results
+bin/
+obj/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Aa]rtifacts/
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Mono Auto Generated Files
+mono_crash.*
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folders for packages
+*.pkg
+*.app
+*.log
+
+# Visual Studio Code directories
+.vscode/
+.vscode/*
+
+# Rider directories
+.idea/
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# DotNetCLI tool directories
+.dotnet/
+
+# NuGet Packages
+*.nupkg
+packages/
+**/packages/*
+
+# .NET Core
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# Windows Store app packages
+*.appx
+*.appxbundle
+*.appxsym
+*.appxupload
+
+# Application Insights
+ApplicationInsights.config
+
+# Windows image file caches
+Thumbs.db
+
+# Azure Web App deployment
+.publish/
+
+# Others
+*.dbmdl
+*.jfm
+
+# Uncomment if needed
+# wwwroot/
+# node_modules/
+
+# Environment variables
+.env
+
+# User secrets
+secrets.json
+
+# Environment-specific settings
+appsettings.Development.json
+
+# Local history for JetBrains IDEs
+.idea/libraries/
+.idea/workspace.xml
+.idea/assetWizard.xml
+.idea/spellchecker.xml
+.idea/dictionaries
+
+# Rider projects
+.idea/
+
+# SQL Server files
+*.mdf
+*.ldf
+
+# Local database files
+*.sdf
+
+# Entity Framework Core migrations
+[Mm]igrations/
+
+# Publish directory
+publish/
