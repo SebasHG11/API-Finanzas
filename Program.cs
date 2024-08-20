@@ -26,6 +26,7 @@ builder.Services.AddDbContext<ApiContext>(options =>
 
 builder.Services.AddScoped<IIngresoService, IngresoService>();
 builder.Services.AddScoped<ICategoriaService, CategoriaService>();
+builder.Services.AddScoped<IGastoService, GastoService>();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
