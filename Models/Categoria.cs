@@ -1,14 +1,10 @@
 using System.Text.Json.Serialization;
 
 namespace ApiFinanzas.Models {
-    public enum TipoCategoria {
-        Ingreso,
-        Gasto
-    }
     public class Categoria {
         public int Id { get; set; }
         public string Nombre { get; set; }
-        public TipoCategoria Tipo { get; set; }
+        public string Tipo { get; set; } // Gasto o Ingreso
         public decimal? Presupuesto { get; set; }
         [JsonIgnore]
         public List<Ingreso> Ingresos { get; set; }
