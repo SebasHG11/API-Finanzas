@@ -26,7 +26,7 @@ namespace ApiFinanzas.Services {
             return ingresoActual;
         }
 
-        public async Task CrearIngreso(IngresoDTO ingresoDTO) {
+        public async Task<int> CrearIngreso(IngresoDTO ingresoDTO) {
             var ingresoNuevo = new Ingreso {
                 Concepto = ingresoDTO.Concepto ?? throw new ArgumentNullException("El concepto no puede ser nulo"),
                 Monto = ingresoDTO.Monto ?? throw new ArgumentNullException("El monto no puede ser nulo"),
@@ -36,6 +36,8 @@ namespace ApiFinanzas.Services {
 
             await _context.Ingresos.AddAsync(ingresoNuevo);
             await _context.SaveChangesAsync();
+
+            return ingresoNuevo.Id;
         }
 
         public async Task EditarIngreso(int id, IngresoDTO ingresoDTO) {
@@ -68,7 +70,7 @@ namespace ApiFinanzas.Services {
     public interface IIngresoService {
         Task<ICollection<Ingreso>> MostrarIngresosAsync();
         Task<Ingreso> MostrarIngresoPorId(int id);
-        Task CrearIngreso(IngresoDTO ingresoDTO);
+        Task<int> CrearIngreso(IngresoDTO ingresoDTO);
         Task EditarIngreso(int id, IngresoDTO ingresoDTO);
         Task EliminarIngreso(int id);
     }
