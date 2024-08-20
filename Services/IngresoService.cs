@@ -3,7 +3,7 @@ using ApiFinanzas.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace ApiFinanzas.Services {
-    public class IngresoService {
+    public class IngresoService: IIngresoService {
         private readonly ApiContext _context;
 
         public IngresoService(ApiContext context)
@@ -63,5 +63,13 @@ namespace ApiFinanzas.Services {
             _context.Ingresos.Remove(ingresoActual);
             await _context.SaveChangesAsync();
         }
+    }
+
+    public interface IIngresoService {
+        Task<ICollection<Ingreso>> MostrarIngresosAsync();
+        Task<Ingreso> MostrarIngresoPorId(int id);
+        Task CrearIngreso(IngresoDTO ingresoDTO);
+        Task EditarIngreso(int id, IngresoDTO ingresoDTO);
+        Task EliminarIngreso(int id);
     }
 }
