@@ -17,7 +17,7 @@ namespace ApiFinanzas.Data {
                 entity.ToTable("Ingreso");
                 entity.HasKey(i => i.Id);
                 entity.Property(i => i.Concepto).IsRequired(true).HasMaxLength(80);
-                entity.Property(i => i.Monto).IsRequired(true);
+                entity.Property(i => i.Monto).IsRequired(true).HasPrecision(18, 2);
                 entity.Property(i => i.Fecha).IsRequired(true);
                 entity.HasOne(i => i.Categoria)
                 .WithMany(c => c.Ingresos)
@@ -29,7 +29,7 @@ namespace ApiFinanzas.Data {
                 entity.ToTable("Gasto");
                 entity.HasKey(g => g.Id);
                 entity.Property(g => g.Concepto).IsRequired(true).HasMaxLength(80);
-                entity.Property(g => g.Monto).IsRequired(true);
+                entity.Property(g => g.Monto).IsRequired(true).HasPrecision(18,2);
                 entity.Property(g => g.Fecha).IsRequired(true);
                 entity.HasOne(g => g.Categoria)
                 .WithMany(c => c.Gastos)
@@ -42,7 +42,7 @@ namespace ApiFinanzas.Data {
                 entity.HasKey(c => c.Id);
                 entity.Property(c => c.Nombre).IsRequired(true).HasMaxLength(80);
                 entity.Property(c => c.Tipo).IsRequired(true);
-                entity.Property(c => c.Presupuesto).IsRequired(false);
+                entity.Property(c => c.Presupuesto).IsRequired(false).HasPrecision(18, 2);
             });
         }
     }

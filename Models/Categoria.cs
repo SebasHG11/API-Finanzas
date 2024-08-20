@@ -7,7 +7,7 @@ namespace ApiFinanzas.Models {
         public int Id { get; set; }
         public string Nombre { get; set; }
         public TipoCategoria Tipo { get; set; }
-        public decimal Presupuesto { get; set; }
+        public decimal? Presupuesto { get; set; }
         public List<Ingreso> Ingresos { get; set; }
         public List<Gasto> Gastos { get; set; }
 
