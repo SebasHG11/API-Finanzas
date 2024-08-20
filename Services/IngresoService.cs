@@ -12,12 +12,16 @@ namespace ApiFinanzas.Services {
         }
 
         public async Task<ICollection<Ingreso>> MostrarIngresosAsync() {
-            var Ingresos = await _context.Ingresos.ToListAsync();
+            var Ingresos = await _context.Ingresos
+            .Include(i => i.Categoria)
+            .ToListAsync();
             return Ingresos;
         }
 
         public async Task<Ingreso> MostrarIngresoPorId(int id) {
-            var ingresoActual = await _context.Ingresos.FirstAsync(i => i.Id == id);
+            var ingresoActual = await _context.Ingresos
+            .Include(i => i.Categoria)
+            .FirstAsync(i => i.Id == id);
 
             if(ingresoActual == null) {
                 throw new KeyNotFoundException("El ingreso con el id ingresado no existe.");

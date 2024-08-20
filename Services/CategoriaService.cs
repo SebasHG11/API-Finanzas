@@ -27,10 +27,23 @@ namespace ApiFinanzas.Services {
             return categoriaActual;
         }
 
-        public async Task<int> CrearCategoria(CategoriaDTO categoriaDTO) {
+        public async Task<int> CrearCategoriaGastos(CategoriaDTO categoriaDTO) {
             var nuevaCategoria = new Categoria {
                 Nombre = categoriaDTO.Nombre ?? throw new ArgumentNullException("El nombre de la categoria no puede ser nula"),
-                Tipo = categoriaDTO.Tipo ?? throw new ArgumentNullException("El tipo no puede ser nulo"),
+                Tipo = "Gastos",
+                Presupuesto = categoriaDTO.Presupuesto
+            };
+
+            await _context.Categorias.AddAsync(nuevaCategoria);
+            await _context.SaveChangesAsync();
+
+            return nuevaCategoria.Id;
+        }
+
+        public async Task<int> CrearCategoriaIngresos(CategoriaDTO categoriaDTO) {
+            var nuevaCategoria = new Categoria {
+                Nombre = categoriaDTO.Nombre ?? throw new ArgumentNullException("El nombre de la categoria no puede ser nula"),
+                Tipo = "Ingresos",
                 Presupuesto = categoriaDTO.Presupuesto
             };
 
@@ -68,7 +81,8 @@ namespace ApiFinanzas.Services {
     public interface ICategoriaService {
         Task<ICollection<Categoria>> MostrarCategorias();
         Task<Categoria> MostrarCategoriaPorId(int id);
-        Task<int> CrearCategoria(CategoriaDTO categoriaDTO);
+        Task<int> CrearCategoriaGastos(CategoriaDTO categoriaDTO);
+        Task<int> CrearCategoriaIngresos(CategoriaDTO categoriaDTO);
         Task EditarCategoria(int id, CategoriaDTO categoriaDTO);
         Task EliminarCategoria(int id);
     }
