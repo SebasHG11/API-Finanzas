@@ -15,8 +15,8 @@ namespace ApiFinanzas.Controllers {
         [HttpGet]
         public async Task<IActionResult> GetAllGastos() {
             try{
-                await _gastoService.MostrarGastos();
-                return Ok();   
+                var Gastos = await _gastoService.MostrarGastos();
+                return Ok(Gastos);   
             } catch(Exception ex){
                 return BadRequest(ex);
             }
